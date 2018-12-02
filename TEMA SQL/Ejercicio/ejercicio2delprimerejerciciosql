@@ -1,0 +1,29 @@
+--EJERCICIO 2
+
+DESC USER_TABLES
+--COMPROBAR EXISTENCIA DE OBJETOS
+SELECT table_name
+FROM user_tables --me devuelve las filas, la seleccion (porque he cogido solo el select y el from con el cursor)
+WHERE lower(table_name) IN ('tiendas','ventas','pedidos','articulos','fabricantes');
+
+--COMPROBAR LAS COLUMNAS DE CADA TABLA
+DESC tiendas --me da la estructura de cada uno de ellos
+DESC ventas --tantos desc como tablas haya
+DESC pedidos
+DESC articulos
+DESC fabricantes
+
+--COMPROBAR LAS RESTRICCIONES Y SUS COLUMNAS
+DESC CONSTRAINTS
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE,TABLE_NAME
+FROM USER_CONSTRAINTS
+WHERE lower(table_name) IN ('tiendas','ventas','pedidos','articulos','fabricantes')
+ORDER BY TABLE_NAME ;
+
+DESC USER_CONS_COLUMNS
+
+SELECT*
+FROM USER_CONS_COLUMNS
+WHERE lower(table_name) IN ('tiendas','ventas','pedidos','articulos','fabricantes')
+ORDER BY TABLE_NAME;
