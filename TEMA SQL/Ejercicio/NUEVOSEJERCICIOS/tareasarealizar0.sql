@@ -148,7 +148,7 @@ FROM EMPLE
 WHERE COMISION_PCT IS NULL;
 
 
-SELECT EMP_NO, APELLIDO, OFICIO, DEPT_NO  -- 
+SELECT EMP_NO, APELLIDO, OFICIO, DEPT_NO 
 FROM EMPLE
 WHERE DEPT_NO IN 20
 ORDER BY APELLIDO, SALARIO;
@@ -156,34 +156,3 @@ ORDER BY APELLIDO, SALARIO;
 
 
 
-/*    1. Seleccionar de la tabla EMPLE aquellos empleados del
-departamento 20 y cuyo oficio sea ‘ANALISTA’. La consulta se
-ha de ordenar de modo descendente por APELLIDO y también de
-manera descendente por número de empleado.*/
-
-SELECT EMP_NO
-FROM EMPLE
-WHERE DEPT_NO=20 AND upper(OFICIO)='ANALISTA'
-ORDER BY APELLIDO DESC,EMP_NO DESC;
-
-
-       
- /*2. Mostrar el apellido, oficio y fecha de alta
-de los empleados contratados entre los meses de mayo 
-y setiembre del año 1981. Obtener la salida ordenada 
-por fecha de alta.*/
-
-SELECT APELLIDO, OFICIO, FECHA_ALTA
-FROM EMPLE
-WHERE FECHA_ALTA BETWEEN TO_DATE ('01-05-1981','DD,MM,YYYY') AND TO_DATE('30-09-1981','DD,MM,YYYY') --TO_DATE ('1912-12-12', 'YYYY-MM-DD') en el que el primer valor es el de la fecha y lo segundo es una mascara
-ORDER BY FECHA_ALTA;
-       
-/*3.  Mostrar los apellidos de los empleados concatenados 
-con el oficio, separados por una coma y un espacio en blanco
-y ordenados por el apellido. Llamar a la columna 'EMPLE y OFI'.*/
-
-SELECT APELLIDO || ', ' || OFICIO AS "EMPLE y OFI" --entre "" ponemos el nombre que queremos que tenga la columna. es el único sitio donde vamos a usar las "". 
---puedes poner varios select y "" ej) SELECT  tipo, modelo "unnombrenuevo", tipo || .. //no es que cambias el nombre de la tabla porque no es un RENAME
---sino lo que haces es que en la vista cambias el nombre de la columna 
-FROM EMPLE
-ORDER BY APELLIDO;
